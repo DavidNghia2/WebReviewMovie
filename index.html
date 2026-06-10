@@ -14,7 +14,7 @@
       } catch (error) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=english-posters">
+  <link rel="stylesheet" href="css/styles.css?v=cinematic-ui">
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -60,11 +60,11 @@
       <div class="stats-strip" data-stats="home"></div>
     </section>
 
-    <section class="section-shell">
+    <section class="section-shell section-stack">
       <div class="section-heading">
         <div>
           <p class="eyebrow">Trending now</p>
-          <h1>Popular movie reviews</h1>
+          <h1>Trending Movies</h1>
         </div>
         <div class="heading-actions">
           <span class="result-count" data-results-count data-count-scope="home">Showing popular picks</span>
@@ -72,6 +72,30 @@
         </div>
       </div>
       <div class="movie-grid" data-render="home-popular"></div>
+    </section>
+
+    <section class="section-shell section-stack top-rated-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Critic favorites</p>
+          <h2>Top Rated</h2>
+        </div>
+        <a class="text-link" href="popular.html">Browse library</a>
+      </div>
+      <div class="movie-grid compact-grid" data-render="top-rated"></div>
+      <p class="empty-state" data-empty-state hidden>No top rated movies available.</p>
+    </section>
+
+    <section class="section-shell section-stack latest-reviews-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Fresh reactions</p>
+          <h2>Latest Reviews</h2>
+        </div>
+        <a class="text-link" href="reviews.html">Write a review</a>
+      </div>
+      <div class="review-list review-list-featured" data-home-reviews></div>
+      <p class="empty-state" data-home-reviews-empty hidden>No reviews yet.</p>
     </section>
 
     <section class="section-shell favorites-shell">
@@ -90,6 +114,6 @@
     <p>&copy; 2026 CineScope Review. Built with HTML, CSS and JavaScript.</p>
   </footer>
 
-  <script src="js/script.js?v=english-posters"></script>
+  <script src="js/script.js?v=cinematic-ui"></script>
 </body>
 </html>

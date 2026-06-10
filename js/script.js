@@ -548,6 +548,204 @@ const MOVIES = [
   }
 ];
 
+const MOVIE_PLOTS = {
+  'oppenheimer': `J. Robert Oppenheimer is recruited to lead the Manhattan Project after physicists warn that Nazi Germany may be racing toward an atomic weapon. In Los Alamos, he gathers a brilliant but uneasy team, balances science with military pressure and watches his theoretical work become a weapon capable of ending a war. After Hiroshima and Nagasaki, his triumph turns into guilt, political suspicion and public hearings that strip away his security clearance. The story follows a man celebrated as a genius while being forced to confront the human cost of what he helped create.`,
+  'dune-part-two': `Paul Atreides survives in the desert with Chani and the Fremen after the fall of House Atreides. As he learns their ways, he becomes a symbol of prophecy, but he fears that accepting that role will unleash a holy war across the universe. The Harkonnens tighten their grip on Arrakis, forcing Paul to choose between love, revenge and political destiny. By drinking the Water of Life, he embraces a terrifying vision of the future, defeats Feyd-Rautha and claims imperial power, even as Chani realizes the man she loved has become something much larger and more dangerous.`,
+  'top-gun-maverick': `Pete Maverick Mitchell is called back to Top Gun to train a new class of elite pilots for a nearly impossible strike mission. Among them is Rooster, the son of Maverick's late friend Goose, whose resentment creates emotional tension as dangerous training begins. Maverick pushes the pilots beyond official limits because he believes survival depends on instinct and trust. When the mission arrives, he leads the team himself, saves Rooster, and finally reconciles with the past. The story ends with Maverick and Rooster honoring Goose while proving that experience and courage still matter.`,
+  'inception': `Dom Cobb steals secrets by entering dreams, but his grief over his wife Mal makes him unstable and keeps him away from his children. A powerful businessman offers Cobb a chance to return home if he can perform inception: planting an idea inside the mind of an heir named Fischer. Cobb builds a team that travels through layered dreams, each level becoming more dangerous as projections and memories interfere. The mission succeeds when Fischer accepts the planted emotional truth about his father. Cobb finally lets go of Mal and returns to his children, while the spinning top leaves the ending open.`,
+  'interstellar': `Earth is dying, so former pilot Cooper joins a secret NASA mission through a wormhole near Saturn to find a new world for humanity. He leaves his daughter Murph behind, promising to return, but relativity stretches time as the crew explores planets around a black hole. Betrayal, sacrifice and cosmic isolation test the mission. Cooper enters the black hole and finds a strange space where he can communicate with Murph across time through gravity. Murph solves the equation needed to save humanity, and Cooper wakes years later near Saturn before leaving to find Brand, who is building a future on another planet.`,
+  'the-dark-knight': `Batman, Lieutenant Gordon and district attorney Harvey Dent try to dismantle Gotham's criminal underworld, but the Joker appears to prove that order is fragile. He manipulates criminals, officials and civilians into moral traps, forcing Batman to choose between rules and survival. Rachel Dawes is killed, Dent is scarred and Gotham's symbol of legal hope becomes Two-Face. Batman stops the Joker but cannot save Dent from revenge. To protect Dent's public image and preserve Gotham's faith, Batman takes the blame for Dent's crimes and disappears as a hunted guardian.`,
+  'parasite': `The poor Kim family slowly infiltrates the wealthy Park household by posing as unrelated skilled workers. Their scheme brings comfort and income until they discover a former housekeeper's husband hiding in a secret basement beneath the mansion. Class resentment, deception and desperation collide during a storm and a birthday party. Violence erupts when hidden tensions surface, leaving Mr. Park and the basement man dead while Ki-taek hides underground. Ki-woo dreams of earning enough money to buy the house and free his father, but the ending suggests that dream may remain painfully out of reach.`,
+  'whiplash': `Andrew Neiman, an ambitious jazz drummer, joins an elite conservatory band led by the abusive conductor Terence Fletcher. Fletcher humiliates and pressures Andrew, claiming greatness requires extreme discipline. Andrew sacrifices relationships, health and basic stability to prove himself, but his obsession leads to collapse and expulsion. Later, Fletcher tricks him into a public performance designed to ruin him. Instead of giving up, Andrew launches into an astonishing drum solo, forcing Fletcher to conduct along. The ending is both victory and warning: Andrew achieves brilliance, but possibly by accepting the very cruelty that harmed him.`,
+  'the-matrix': `Hacker Thomas Anderson, known as Neo, learns from Morpheus and Trinity that the world he knows is a simulated reality built by machines that harvest human bodies. Neo joins the resistance and trains to bend the rules of the Matrix, but doubts whether he is truly the One. Cypher betrays the crew, Morpheus is captured, and Neo risks everything to rescue him. After being killed by Agent Smith, Neo awakens with full control over the simulation. He defeats Smith and announces that humanity can choose freedom from the system.`,
+  'the-shawshank-redemption': `Andy Dufresne is wrongly imprisoned for the murder of his wife and her lover. Inside Shawshank, he survives brutality, builds a friendship with Red and quietly earns influence by helping prison staff with finances. The corrupt warden exploits Andy's skills and suppresses evidence that could prove his innocence. For years, Andy secretly tunnels through his cell wall and prepares an escape. When the moment comes, he exposes the warden's crimes and vanishes to Mexico. Red is later paroled, follows Andy's clues and reunites with him by the sea.`,
+  'the-godfather': `Don Vito Corleone tries to protect his family and criminal empire while refusing to join a narcotics business. After an assassination attempt, his youngest son Michael, initially an outsider to the family business, kills the men responsible and hides in Sicily. Violence escalates, Sonny is murdered and Vito eventually makes peace to bring Michael home. Michael takes control, promises legitimacy, then orders a brutal purge of rival enemies during his nephew's baptism. The story ends with Michael fully becoming the new Godfather, closing the door on his wife and his former innocence.`,
+  'pulp-fiction': `Several criminal stories unfold out of order in Los Angeles. Hitmen Vincent Vega and Jules Winnfield retrieve a briefcase, survive a miraculous shooting and argue about meaning. Vincent takes Mia Wallace out and barely saves her from an overdose. Boxer Butch Coolidge double-crosses Marsellus Wallace, then unexpectedly rescues him from a horrific situation. Jules decides the miracle means he should leave the life of violence, while Vincent remains trapped in it. The film connects chance, loyalty and consequence through criminals trying to survive one strange day at a time.`,
+  'forrest-gump': `Forrest Gump grows up in Alabama with a kind heart, physical limitations and a gift for running. He becomes involved in football, war, ping-pong, business and major historical moments without losing his innocence. His deepest connection is Jenny, whose life follows a more painful path through abuse, fame, addiction and searching. Forrest becomes a war hero, a shrimp boat captain and a father. Jenny returns, reveals their son and marries Forrest before dying from illness. Forrest raises their child, still believing life must be met with patience, love and openness.`,
+  'gladiator': `Roman general Maximus is chosen by Emperor Marcus Aurelius to help restore Rome, but the emperor's jealous son Commodus murders his father and orders Maximus executed. Maximus escapes too late to save his wife and son, then is enslaved and forced to fight as a gladiator. His skill and honor make him beloved by the crowd, threatening Commodus. Maximus helps expose the emperor's corruption and faces him in the arena after being secretly wounded. He kills Commodus, frees Rome from his rule and dies with a vision of reuniting with his family.`,
+  'mad-max-fury-road': `In a desert wasteland ruled by Immortan Joe, Max is captured and used as a blood donor. Imperator Furiosa escapes with Joe's enslaved wives, hoping to reach the Green Place where she was born. Max joins them reluctantly, and the group is chased through brutal vehicle battles by Joe's army. When they discover the Green Place is gone, they choose to turn back and seize Joe's citadel instead of running forever. Furiosa kills Joe, frees the water supply and becomes a leader, while Max disappears again into the wasteland.`,
+  'john-wick': `John Wick is a retired assassin grieving his wife when criminals steal his car and kill the puppy she left him as a final gift. The attack pulls him back into the underworld he once escaped. John hunts the men responsible, revealing his legendary reputation to crime boss Viggo Tarasov, whose son caused the violence. The pursuit becomes a war against old debts, assassins and criminal codes. John kills Viggo and his son, but the revenge does not erase his grief. He walks away wounded, taking another dog as a quiet step toward survival.`,
+  'avengers-endgame': `After Thanos wipes out half of all life, the surviving Avengers live with failure and grief. Years later, Scott Lang returns from the quantum realm with a plan to travel through time and collect the Infinity Stones before Thanos can use them. The team revisits past battles, losing Natasha in the process, and Hulk restores the vanished. A past version of Thanos attacks, leading to a final battle where heroes from across the universe unite. Tony Stark uses the stones to defeat Thanos and dies, closing his arc as the Avengers mourn and rebuild.`,
+  'spider-man-across-the-spider-verse': `Miles Morales struggles to balance school, family and being Spider-Man while Gwen Stacy faces her own crisis in another universe. When the villain Spot grows more powerful, Miles follows Gwen into the multiverse and meets a society of Spider-People led by Miguel O'Hara. Miguel believes every Spider-Man story must include certain tragedies, including the death of a police captain, and warns Miles not to save his father. Miles rejects this fate and escapes, only to land in the wrong universe where another version of himself became the Prowler. The story ends on a cliffhanger as Gwen forms a rescue team.`,
+  'spider-man-into-the-spider-verse': `Teenager Miles Morales is bitten by a radioactive spider and gains powers just as Wilson Fisk's collider damages reality. The original Spider-Man dies, leaving Miles with a mission he does not feel ready for. Spider-heroes from other dimensions arrive, including Peter B. Parker and Gwen Stacy, and help Miles understand what it means to wear the mask. After his uncle Aaron dies as the Prowler, Miles embraces his identity, destroys the collider and sends the others home. He becomes his own Spider-Man, not by copying Peter, but by trusting himself.`,
+  'blade-runner-2049': `K, a replicant blade runner, discovers evidence that a replicant once gave birth, a fact that could disrupt society. His investigation leads him through buried records, corporate manipulation and memories that may or may not be his own. He believes he might be the child, but learns the true child is Dr. Ana Stelline, a memory designer. K chooses to protect her and helps Deckard reach her after years of separation. He dies quietly in the snow, having acted freely and meaningfully despite being created for obedience.`,
+  'la-la-land': `Sebastian, a jazz pianist, and Mia, an aspiring actress, fall in love while chasing careers in Los Angeles. Their romance is shaped by music, auditions, compromise and ambition. Sebastian joins a successful band that pulls him away from his dream, while Mia's one-woman play fails and nearly breaks her confidence. He pushes her to attend one more audition, which launches her career. Years later, Mia is famous and married to someone else. She visits Sebastian's jazz club, and they imagine the life they might have shared before accepting the bittersweet beauty of what happened.`,
+  'fight-club': `An unnamed narrator suffers from insomnia and emotional emptiness until he meets Tyler Durden, a charismatic soap salesman who rejects consumer society. Together they form an underground fight club that evolves into Project Mayhem, a violent movement targeting financial systems. The narrator realizes Tyler is not a separate person but a split identity created from his own desires and rage. He tries to stop the plan, shoots himself to destroy Tyler's control and watches buildings collapse around him. The ending shows liberation and catastrophe arriving at the same time.`,
+  'se7en': `Detectives Somerset and Mills investigate a serial killer who stages murders based on the seven deadly sins. Each crime is elaborate, cruel and designed as a moral message. Somerset is weary and cautious, while Mills is impatient and emotionally exposed. The killer, John Doe, eventually surrenders and offers to reveal the final bodies. In a remote location, Mills learns that Doe murdered his pregnant wife Tracy, making Doe envy and tempting Mills into wrath. Mills kills him, completing the killer's design and leaving Somerset to face the darkness he hoped to escape.`,
+  'dune': `Paul Atreides travels with his family to Arrakis after House Atreides is given control of the desert planet and its valuable spice. The assignment is a trap arranged by imperial politics and House Harkonnen. Paul experiences visions tied to the Fremen and a future he does not understand. When the Harkonnens attack, Duke Leto dies and Paul flees into the desert with his mother Jessica. They are found by Fremen, and Paul kills Jamis in ritual combat. He chooses to join them, stepping toward the destiny and conflict that await him.`,
+  'coco': `Miguel dreams of becoming a musician, but his family bans music because of an old wound. On Dia de los Muertos, he steals a guitar from the tomb of Ernesto de la Cruz and is transported to the Land of the Dead. Miguel seeks Ernesto's blessing, believing him to be his great-great-grandfather, but discovers Ernesto stole songs from Hector and murdered him. Hector is Miguel's real ancestor, and his memory is fading because his daughter Coco is forgetting him. Miguel returns home, plays Hector's song for Coco and restores the family story through music.`,
+  'the-fellowship-of-the-ring': `Frodo Baggins inherits the One Ring, a weapon created by Sauron to dominate Middle-earth. Gandalf sends him away from the Shire, and Frodo joins a fellowship of hobbits, men, a dwarf, an elf and a wizard tasked with destroying the Ring in Mount Doom. The journey brings danger from Nazgul, betrayal by Saruman and temptation within the group. Gandalf falls in Moria, Boromir dies trying to protect Merry and Pippin, and Frodo realizes the Ring endangers everyone near him. He leaves with Sam to continue the quest alone together.`,
+  'the-return-of-the-king': `As Sauron's forces prepare to crush Gondor, Aragorn accepts his identity as king and leads allies into war. Frodo and Sam continue toward Mount Doom, guided and betrayed by Gollum as the Ring becomes heavier and more corrupting. Minas Tirith is attacked, Theoden falls, and the armies of the West make a desperate stand to distract Sauron. At the Crack of Doom, Frodo cannot destroy the Ring, but Gollum takes it and falls into the fire. Sauron is defeated, Aragorn is crowned, and Frodo eventually leaves Middle-earth to heal from wounds that peace cannot fully mend.`,
+  'the-green-mile': `Paul Edgecomb supervises death row at Cold Mountain Penitentiary, where a gentle giant named John Coffey arrives convicted of murdering two girls. Coffey reveals miraculous healing powers and a deep sensitivity to suffering. Paul gradually realizes Coffey is innocent and that the true killer is another prisoner. Coffey heals people but also carries the unbearable pain of the world. Though Paul knows he is innocent, the system still executes him. Years later, Paul remains alive far beyond a normal lifespan, haunted by the miracle he witnessed and the injustice he could not stop.`,
+  'one-flew-over-the-cuckoos-nest': `Randle McMurphy enters a psychiatric hospital hoping to avoid prison labor, but he clashes with Nurse Ratched, whose control over the ward depends on fear and humiliation. McMurphy encourages the patients to laugh, gamble, question authority and feel alive again. His rebellion gives others courage, especially Billy Bibbit, but Ratched's cruelty after a forbidden party drives Billy to suicide. McMurphy attacks her and is lobotomized as punishment. Chief Bromden smothers him to spare him a living death, then escapes, carrying forward the freedom McMurphy awakened.`,
+  'star-wars-a-new-hope': `Luke Skywalker discovers Princess Leia's hidden message inside a droid and meets Obi-Wan Kenobi, who reveals the Force and his father's Jedi past. Luke joins Obi-Wan, Han Solo and Chewbacca to rescue Leia from the Death Star. Obi-Wan sacrifices himself while facing Darth Vader, and the Rebels analyze the station's weakness. Luke joins the attack, hears Obi-Wan's guidance and trusts the Force instead of his targeting computer. He destroys the Death Star, proving that a farm boy can become part of a larger fight against tyranny.`,
+  'the-empire-strikes-back': `After the Empire attacks the Rebel base on Hoth, Luke travels to Dagobah to train with Yoda while Han, Leia, Chewbacca and C-3PO flee through space. Han and Leia grow closer before being betrayed at Cloud City by Lando Calrissian under Darth Vader's pressure. Vader freezes Han in carbonite and uses him as bait for Luke. Luke abandons training to rescue his friends and duels Vader, who cuts off his hand and reveals he is Luke's father. The Rebels survive, but Han is taken by Boba Fett, leaving the heroes wounded and uncertain.`,
+  'joker': `Arthur Fleck is a lonely party clown and aspiring comedian living in Gotham with his ill mother. He suffers from illness, poverty and repeated humiliation while the city grows angrier and more divided. After losing support systems and learning painful truths about his past, Arthur responds to violence with violence and becomes a symbol for public unrest. His failed appearance on Murray Franklin's talk show becomes a murder broadcast to the city. Arthur fully transforms into Joker, embraced by rioters as Gotham descends into chaos.`
+};
+
+const OWNER_REVIEWS = {
+  'oppenheimer': {
+    rating: 5,
+    verdict: 'A thunderous portrait of ambition, guilt and political consequence.',
+    text: `What makes Oppenheimer linger is not only its scale, but the way it traps a brilliant mind inside the aftermath of his own achievement. I admire how the film turns rooms, hearings and glances into suspense. It is dense, but every layer adds pressure to the same question: what happens when genius changes history faster than conscience can process it?`
+  },
+  'dune-part-two': {
+    rating: 5,
+    verdict: 'A monumental sequel that makes myth feel dangerous.',
+    text: `Dune: Part Two is blockbuster filmmaking with a real sense of weight. The spectacle is huge, but the strongest part is how uneasy Paul's rise becomes. I like that the film refuses to make destiny feel clean or heroic. The desert, the politics and the romance all point toward power that costs more than victory should.`
+  },
+  'top-gun-maverick': {
+    rating: 4,
+    verdict: 'Old-school spectacle polished into something surprisingly emotional.',
+    text: `Top Gun: Maverick works because it understands both speed and sincerity. The flying scenes are clean, physical and exciting, while Maverick's relationship with Rooster gives the movie an emotional engine. It is familiar by design, but the craft is so sharp that the familiarity becomes part of the pleasure.`
+  },
+  'inception': {
+    rating: 5,
+    verdict: 'A puzzle movie with enough heart to survive its own cleverness.',
+    text: `Inception is still rewarding because its mechanics never fully swallow the human story. The dream rules, action scenes and layered editing are impressive, yet Cobb's grief keeps the film anchored. I enjoy how the ending leaves the audience with a feeling rather than a solved equation.`
+  },
+  'interstellar': {
+    rating: 5,
+    verdict: 'Cosmic science fiction powered by a very human ache.',
+    text: `Interstellar is at its best when impossible distances become emotional distances. The film reaches for huge scientific ideas, but the father-daughter bond gives those ideas warmth. Some moments are openly sentimental, and I think that is the point: it treats love as something as mysterious and forceful as gravity.`
+  },
+  'the-dark-knight': {
+    rating: 5,
+    verdict: 'A superhero film shaped like a ruthless crime tragedy.',
+    text: `The Dark Knight remains powerful because every character is tested by a moral choice. The Joker is frightening not just because he causes chaos, but because he understands how fragile civic faith can be. The ending still hits hard: Batman wins the immediate fight while losing the clean image of heroism.`
+  },
+  'parasite': {
+    rating: 5,
+    verdict: 'A precise social thriller that changes shape without losing control.',
+    text: `Parasite is one of those films where the craft feels almost invisible because every turn is so confident. It is funny, tense, cruel and heartbreaking, often within the same sequence. I value how it refuses easy heroes and villains, focusing instead on a system that makes people perform desperation.`
+  },
+  'whiplash': {
+    rating: 5,
+    verdict: 'A thrilling performance film with a deeply uneasy victory.',
+    text: `Whiplash is electric because it makes ambition feel like both fuel and poison. The final scene is exhilarating, but I do not read it as simple triumph. Andrew reaches greatness by walking straight into the violence that damaged him, which is why the film keeps echoing after the drums stop.`
+  },
+  'the-matrix': {
+    rating: 5,
+    verdict: 'Stylish, philosophical action that still feels freshly wired.',
+    text: `The Matrix blends cool surface and serious ideas better than almost any modern action film. Its world-building is clear, its action language is iconic and its central metaphor remains flexible enough to feel personal. Neo's awakening works because the movie makes freedom look dangerous, difficult and irresistible.`
+  },
+  'the-shawshank-redemption': {
+    rating: 5,
+    verdict: 'A patient, deeply satisfying story about hope as resistance.',
+    text: `The Shawshank Redemption earns its reputation through emotional clarity. It never treats hope as naive; it treats hope as work, discipline and quiet rebellion. Andy and Red's friendship gives the film its soul, and the final beach reunion feels powerful because the movie has made patience feel heroic.`
+  },
+  'the-godfather': {
+    rating: 5,
+    verdict: 'A crime epic that plays like a family tragedy.',
+    text: `The Godfather is magnificent because it is calm where lesser films would be loud. Michael's transformation is gradual, elegant and chilling. I find the final door closing unforgettable because it turns the entire movie into a story about inheritance: not just of power, but of corruption and emotional distance.`
+  },
+  'pulp-fiction': {
+    rating: 5,
+    verdict: 'A sharp, restless collision of crime, chance and style.',
+    text: `Pulp Fiction is built from attitude, but the structure gives that attitude purpose. The scrambled timeline makes small decisions feel strange and important, while the dialogue turns criminals into oddly vivid philosophers of the everyday. I especially like how Jules gets a spiritual exit while Vincent keeps drifting toward consequence.`
+  },
+  'forrest-gump': {
+    rating: 4,
+    verdict: 'A sentimental American fable carried by a sincere lead performance.',
+    text: `Forrest Gump is broad, warm and sometimes very tidy about history, but its emotional pull is hard to deny. Tom Hanks gives Forrest a gentleness that keeps the film from becoming only a gimmick. I respond most to the way the movie contrasts Forrest's steadiness with Jenny's wounded search for peace.`
+  },
+  'gladiator': {
+    rating: 4,
+    verdict: 'A muscular revenge epic with an elegiac heart.',
+    text: `Gladiator works because Maximus is not only chasing revenge; he is chasing reunion, honor and a lost idea of Rome. The arena scenes have force, but the film's mournful tone is what gives them meaning. It is grand entertainment with a surprisingly tender sense of grief.`
+  },
+  'mad-max-fury-road': {
+    rating: 5,
+    verdict: 'Pure visual momentum with a clean moral center.',
+    text: `Mad Max: Fury Road is action cinema reduced to essentials and then built back up with astonishing craft. The chase structure is simple, but every image tells story, geography and character. Furiosa's arc gives the chaos purpose, making survival feel inseparable from liberation.`
+  },
+  'john-wick': {
+    rating: 4,
+    verdict: 'A lean revenge film elevated by world-building and movement.',
+    text: `John Wick is beautifully direct: grief enters a criminal machine and refuses to stop. The film's style is precise without feeling sterile, and the underworld rules make the revenge feel mythic. I like how the story understands that John's violence is skillful, but never confused with healing.`
+  },
+  'avengers-endgame': {
+    rating: 4,
+    verdict: 'A huge finale that turns franchise history into emotional payoff.',
+    text: `Avengers: Endgame is messy in the way only a giant crossover can be, but it understands what fans came to feel. The time-heist structure lets the film honor earlier chapters while giving Tony and Steve meaningful closure. Its best moments are less about surprise than earned goodbye.`
+  },
+  'spider-man-across-the-spider-verse': {
+    rating: 5,
+    verdict: 'A dazzling sequel about identity, fate and refusing the script.',
+    text: `Across the Spider-Verse is visually fearless, but its emotional argument is just as strong. Miles is not only fighting a villain; he is fighting the idea that trauma is a required membership card for heroism. The cliffhanger is bold because the film has made his choice feel urgent and personal.`
+  },
+  'spider-man-into-the-spider-verse': {
+    rating: 5,
+    verdict: 'A joyful origin story about becoming yourself, not replacing someone else.',
+    text: `Into the Spider-Verse is bursting with invention, but its heart is beautifully simple. Miles becomes Spider-Man when he stops trying to be perfect and starts trusting his own rhythm. The animation, humor and music all serve that idea, which is why the film feels so alive.`
+  },
+  'blade-runner-2049': {
+    rating: 5,
+    verdict: 'A slow, haunting sequel about personhood and chosen meaning.',
+    text: `Blade Runner 2049 moves with patience, but that patience lets loneliness become atmosphere. K's journey is moving because he does not need to be special by birth to matter. His final choice gives him dignity, and the film finds something deeply human inside artificial life.`
+  },
+  'la-la-land': {
+    rating: 4,
+    verdict: 'A bittersweet musical about love, timing and the price of dreams.',
+    text: `La La Land is bright on the surface and quietly bruised underneath. I appreciate that it does not punish ambition or romance; it simply admits that both can pull people in different directions. The fantasy ending is devastating because it honors the love without rewriting the life.`
+  },
+  'fight-club': {
+    rating: 4,
+    verdict: 'A provocative identity crisis with a dangerous pulse.',
+    text: `Fight Club is angry, funny and intentionally unstable. Its strongest quality is how it seduces the viewer with Tyler's confidence before revealing the emptiness and violence behind it. I think the film works best as a warning about turning frustration into ideology.`
+  },
+  'se7en': {
+    rating: 5,
+    verdict: `A grim detective story with one of cinema's cruelest traps.`,
+    text: `Se7en is oppressive in the best possible way: every room feels damp with moral exhaustion. The contrast between Somerset and Mills gives the investigation emotional shape, while John Doe's final move turns genre expectation into tragedy. It is not pleasant, but it is brutally effective.`
+  },
+  'dune': {
+    rating: 4,
+    verdict: 'A patient opening chapter that makes a vast universe feel tactile.',
+    text: `Dune is more foundation than conclusion, but the foundation is stunning. I admire how it lets scale, ritual and silence create wonder. Paul's story is still forming here, yet the film makes Arrakis feel dangerous and sacred enough that the unfinished ending feels like an invitation rather than a flaw.`
+  },
+  'coco': {
+    rating: 5,
+    verdict: 'A vibrant family story that earns every tear.',
+    text: `Coco is colorful, funny and emotionally exact. The mystery is accessible, but the real strength is its respect for memory as an act of love. By the time Miguel plays for Mama Coco, the film has turned music into family history, forgiveness and farewell all at once.`
+  },
+  'the-fellowship-of-the-ring': {
+    rating: 5,
+    verdict: 'A near-perfect adventure opening built on friendship and dread.',
+    text: `The Fellowship of the Ring makes fantasy feel ancient, dangerous and intimate. The world is enormous, but the emotional center is small: Frodo and Sam choosing to keep going. I love how the film balances wonder with sadness, ending not with victory but with commitment.`
+  },
+  'the-return-of-the-king': {
+    rating: 5,
+    verdict: 'A sweeping finale that understands the cost of returning home.',
+    text: `The Return of the King delivers spectacle, but its most lasting idea is that victory does not erase wounds. Aragorn's rise, Sam's loyalty and Frodo's damage all land with force. The long farewell works for me because the film is not just ending a plot; it is grieving a journey.`
+  },
+  'the-green-mile': {
+    rating: 4,
+    verdict: 'A tender prison fable about mercy, injustice and unbearable empathy.',
+    text: `The Green Mile is deliberately emotional, and I think its sincerity is its strength. John Coffey's gentleness makes the cruelty around him feel even heavier. The film asks what goodness can do inside an unjust system, then answers with something sadder than comfort.`
+  },
+  'one-flew-over-the-cuckoos-nest': {
+    rating: 5,
+    verdict: 'A fierce human drama about control, dignity and rebellion.',
+    text: `One Flew Over the Cuckoo's Nest is powerful because McMurphy's rebellion is messy but life-giving. Nurse Ratched's control feels terrifying because it is quiet and institutional. The ending hurts, yet Chief's escape makes the film's spirit feel released rather than extinguished.`
+  },
+  'star-wars-a-new-hope': {
+    rating: 5,
+    verdict: 'A clean heroic adventure with mythic simplicity and lasting charm.',
+    text: `A New Hope works because it makes big myth feel friendly. The story is direct, but every character has a clear energy: Luke's longing, Leia's steel, Han's swagger and Obi-Wan's calm. It remains a model of how to invite an audience into a universe without drowning them in explanation.`
+  },
+  'the-empire-strikes-back': {
+    rating: 5,
+    verdict: 'A darker sequel that deepens the myth without losing adventure.',
+    text: `The Empire Strikes Back is the rare middle chapter that feels complete because defeat becomes the point. Luke learns that courage without patience is dangerous, Han and Leia gain real romantic texture, and Vader becomes more than a villain. The final uncertainty is exactly why it endures.`
+  },
+  'joker': {
+    rating: 4,
+    verdict: 'A bleak character descent led by an intensely controlled performance.',
+    text: `Joker is uncomfortable by design. Its best element is Joaquin Phoenix's physical commitment, which makes Arthur seem fragile, theatrical and frightening at once. I value the film more as a mood piece about alienation than as social diagnosis, but its final transformation is undeniably memorable.`
+  }
+};
+
 const SEEDED_REVIEWS = [
   {
     id: 'seed-1',
@@ -604,15 +802,18 @@ function initApp() {
   setupMobileNav();
   setupThemeToggle();
   setupStaticIcons();
+  setupMovieDetailPage();
   ensureModal();
   renderMovieAreas();
   setupSlider();
   setupReviewPage();
+  renderHomeReviews();
   setupContactPage();
   renderStats();
   document.addEventListener('click', handleDocumentClick);
   document.addEventListener('keydown', handleKeyboard);
   document.addEventListener('error', handleImageError, true);
+  document.body.classList.add('is-ready');
 }
 
 function icon(name, className = '') {
@@ -629,6 +830,8 @@ function icon(name, className = '') {
     clear: '<path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 14h10l1-14"/><path d="M9 7V4h6v3"/>',
     heart: '<path d="M12 21s-8-4.7-8-11a4.8 4.8 0 0 1 8-3.5A4.8 4.8 0 0 1 20 10c0 6.3-8 11-8 11Z"/>',
     details: '<circle cx="12" cy="12" r="9"/><path d="M12 10v7M12 7h.01"/>',
+    story: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z"/><path d="M8 6h8M8 10h8M8 14h5"/>',
+    quote: '<path d="M8 11H4a4 4 0 0 1 4-4v10H4v-6"/><path d="M20 11h-4a4 4 0 0 1 4-4v10h-4v-6"/>',
     sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
     moon: '<path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4 14.2-4 16 0"/>',
@@ -698,8 +901,7 @@ function setupMobileNav() {
 
 function setupThemeToggle() {
   const saved = getStoredTheme();
-  const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = document.documentElement.dataset.theme || saved || (systemDark ? 'dark' : 'light');
+  const theme = document.documentElement.dataset.theme || saved || 'dark';
   applyTheme(theme, false);
 }
 
@@ -823,9 +1025,14 @@ function slideMarkup(movie, index) {
         </div>
         <h2>${escapeHTML(movie.title)}</h2>
         <p>${escapeHTML(movie.summary)}</p>
-        <button class="primary-btn" type="button" data-action="details" data-movie-id="${movie.id}">
-          ${icon('details', 'button-icon')}<span>View Details</span>
-        </button>
+        <div class="slide-actions">
+          <button class="primary-btn" type="button" data-action="details" data-movie-id="${movie.id}">
+            ${icon('details', 'button-icon')}<span>View Details</span>
+          </button>
+          <a class="secondary-btn hero-story-btn" href="${moviePageUrl(movie.id)}">
+            ${icon('story', 'button-icon')}<span>Full Story</span>
+          </a>
+        </div>
       </div>
     </article>
   `;
@@ -864,6 +1071,12 @@ function renderMovieAreas() {
       const movies = getPopularMovies().slice(0, 9);
       renderMovieGrid(container, movies);
       updateResultCount(document.querySelector('[data-count-scope="home"]'), movies.length, movies.length, 'popular pick');
+      return;
+    }
+
+    if (renderType === 'top-rated') {
+      const movies = sortMovies(MOVIES, 'rating').slice(0, 6);
+      renderMovieGrid(container, movies);
       return;
     }
 
@@ -985,6 +1198,7 @@ function renderMovieGrid(container, movieList) {
 
 function movieCardMarkup(movie) {
   const genres = movie.genres.map((genre) => `<span class="genre-tag">${escapeHTML(genre)}</span>`).join('');
+  const snippet = truncateText(movie.review, 118);
 
   return `
     <article class="movie-card" data-movie-card="${movie.id}">
@@ -1002,6 +1216,7 @@ function movieCardMarkup(movie) {
         </div>
         <div class="movie-meta">${movie.year} &bull; ${escapeHTML(movie.runtime)}</div>
         <div class="genre-row">${genres}</div>
+        <p class="movie-snippet">${escapeHTML(snippet)}</p>
         <div class="card-actions">
           ${favoriteButtonMarkup(movie.id)}
           ${ratingGroupMarkup(movie.id)}
@@ -1009,6 +1224,9 @@ function movieCardMarkup(movie) {
         <button class="secondary-btn details-btn" type="button" data-action="details" data-movie-id="${movie.id}">
           ${icon('details', 'button-icon')}<span>View Details</span>
         </button>
+        <a class="secondary-btn details-btn story-btn" href="${moviePageUrl(movie.id)}">
+          ${icon('story', 'button-icon')}<span>Full Story</span>
+        </a>
       </div>
     </article>
   `;
@@ -1020,6 +1238,10 @@ function getPopularMovies() {
 
 function findMovie(movieId) {
   return MOVIES.find((movie) => movie.id === movieId);
+}
+
+function moviePageUrl(movieId) {
+  return `movie.html?id=${encodeURIComponent(movieId)}`;
 }
 
 /* ---------- Favorites and star ratings ---------- */
@@ -1266,6 +1488,9 @@ function movieModalMarkup(movie) {
         <div class="genre-row">${genres}</div>
         <p class="modal-summary">${escapeHTML(movie.summary)}</p>
         <p>${escapeHTML(movie.review)}</p>
+        <a class="secondary-btn modal-story-link" href="${moviePageUrl(movie.id)}">
+          ${icon('story', 'button-icon')}<span>Read Full Story and Owner Review</span>
+        </a>
         <div class="fact-grid">
           <div class="fact">${icon('calendar', 'fact-icon')}<span>Year</span><strong>${movie.year}</strong></div>
           <div class="fact">${icon('clock', 'fact-icon')}<span>Runtime</span><strong>${escapeHTML(movie.runtime)}</strong></div>
@@ -1301,6 +1526,150 @@ function closeModal() {
 
 function getReviewQuote(movieId) {
   return getAllReviews().find((review) => review.movieId === movieId);
+}
+
+function getFullPlot(movieId) {
+  const movie = findMovie(movieId);
+  return MOVIE_PLOTS[movieId] || (movie ? movie.summary : 'Full plot is not available yet.');
+}
+
+function getOwnerReview(movieId) {
+  const movie = findMovie(movieId);
+  return OWNER_REVIEWS[movieId] || {
+    rating: movie ? Math.round(movie.rating) : 4,
+    verdict: movie ? movie.review : 'A thoughtful movie worth discussing.',
+    text: movie ? movie.review : 'The CineScope editor has not added a full owner review for this title yet.'
+  };
+}
+
+/* ---------- Dedicated movie story page ---------- */
+function setupMovieDetailPage() {
+  const mount = document.querySelector('[data-movie-detail]');
+  if (!mount) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const movieId = params.get('id');
+  const movie = findMovie(movieId);
+
+  if (!movie) {
+    document.title = 'CineScope Review | Movie not found';
+    mount.innerHTML = `
+      <section class="page-hero compact-hero">
+        <div class="page-hero-inner">
+          <p class="eyebrow">Not found</p>
+          <h1>Movie not found</h1>
+          <p>This story page needs a valid movie id.</p>
+          <a class="primary-btn not-found-link" href="popular.html">${icon('film', 'button-icon')}<span>Back to movie library</span></a>
+        </div>
+      </section>
+    `;
+    return;
+  }
+
+  document.title = `CineScope Review | ${movie.title} Full Story`;
+  mount.innerHTML = movieDetailMarkup(movie);
+
+  const hero = mount.querySelector('[data-detail-hero]');
+  if (hero) {
+    hero.style.setProperty('--detail-backdrop', `url("${getBackdrop(movie)}")`);
+  }
+}
+
+function movieDetailMarkup(movie) {
+  const ownerReview = getOwnerReview(movie.id);
+  const genres = movie.genres.map((genre) => `<span class="genre-tag">${escapeHTML(genre)}</span>`).join('');
+  const userRating = Number(savedRatings[movie.id] || 0);
+  const relatedMovies = getRelatedMovies(movie);
+
+  return `
+    <section class="movie-detail-hero" data-detail-hero>
+      <div class="movie-detail-hero-inner">
+        <a class="text-link back-link" href="popular.html">${icon('film', 'button-icon')}<span>Back to library</span></a>
+        <div class="movie-detail-layout">
+          <div class="detail-poster">
+            <img src="${getPoster(movie)}" alt="${escapeHTML(movie.title)} poster" data-movie-image="${movie.id}">
+          </div>
+          <div class="detail-copy">
+            <p class="eyebrow">Full spoiler story</p>
+            <h1>${escapeHTML(movie.title)}</h1>
+            <div class="detail-meta-row">
+              <span class="pill">${movie.year}</span>
+              <span class="pill">${escapeHTML(movie.runtime)}</span>
+              <span class="pill">${movie.rating.toFixed(1)} critic rating</span>
+            </div>
+            <div class="genre-row">${genres}</div>
+            <p class="detail-tagline">${escapeHTML(movie.summary)}</p>
+            <div class="detail-actions">
+              ${favoriteButtonMarkup(movie.id)}
+              ${ratingGroupMarkup(movie.id)}
+              <span class="user-rating-label" data-user-rating-label data-movie-id="${movie.id}">
+                ${userRating ? `Your rating: ${userRating}/5` : 'Your rating: not rated yet'}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell movie-story-shell">
+      <div class="story-grid">
+        <article class="story-panel">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Spoiler complete</p>
+              <h2>Full Story From Beginning to Ending</h2>
+            </div>
+          </div>
+          <p class="spoiler-note">${icon('details', 'button-icon')} This section reveals the major events and ending of the film.</p>
+          <div class="story-text">${plotParagraphsMarkup(getFullPlot(movie.id))}</div>
+        </article>
+
+        <aside class="owner-panel">
+          <p class="eyebrow">Owner's review</p>
+          <h2>CineScope Take</h2>
+          <div class="owner-score" aria-label="${ownerReview.rating} out of 5">
+            <span>${starsText(ownerReview.rating)}</span>
+            <strong>${ownerReview.rating}/5</strong>
+          </div>
+          <blockquote class="owner-verdict">
+            ${icon('quote', 'quote-icon')}<span>${escapeHTML(ownerReview.verdict)}</span>
+          </blockquote>
+          <p>${escapeHTML(ownerReview.text)}</p>
+          <div class="fact-grid detail-facts">
+            <div class="fact">${icon('director', 'fact-icon')}<span>Director</span><strong>${escapeHTML(movie.director)}</strong></div>
+            <div class="fact">${icon('cast', 'fact-icon')}<span>Cast</span><strong>${escapeHTML(movie.cast)}</strong></div>
+          </div>
+          <a class="primary-btn owner-review-cta" href="reviews.html">${icon('message', 'button-icon')}<span>Write Your Review</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-shell section-stack related-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Keep exploring</p>
+          <h2>Related Movies</h2>
+        </div>
+        <a class="text-link" href="popular.html">Browse all</a>
+      </div>
+      <div class="movie-grid compact-grid">${relatedMovies.map(movieCardMarkup).join('')}</div>
+    </section>
+  `;
+}
+
+function plotParagraphsMarkup(plot) {
+  return String(plot || '')
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
+    .join('');
+}
+
+function getRelatedMovies(movie) {
+  return getPopularMovies()
+    .filter((candidate) => candidate.id !== movie.id && candidate.genres.some((genre) => movie.genres.includes(genre)))
+    .slice(0, 4);
 }
 
 /* ---------- Reviews page and user review storage ---------- */
@@ -1375,6 +1744,47 @@ function renderReviews() {
     ? reviews.map(reviewMarkup).join('')
     : '<p class="empty-state">No reviews match this movie yet.</p>';
   renderStats();
+  renderHomeReviews();
+}
+
+function renderHomeReviews() {
+  const list = document.querySelector('[data-home-reviews]');
+  if (!list) return;
+
+  const empty = document.querySelector('[data-home-reviews-empty]');
+  const reviews = getAllReviews().slice(0, 3);
+
+  list.innerHTML = reviews.length
+    ? reviews.map(homeReviewMarkup).join('')
+    : '';
+  if (empty) empty.hidden = reviews.length > 0;
+}
+
+function homeReviewMarkup(review) {
+  const movie = findMovie(review.movieId);
+  const title = movie ? movie.title : 'Unknown movie';
+  const poster = movie ? getPoster(movie) : '';
+  const posterMarkup = movie
+    ? `<button class="review-thumb" type="button" data-action="details" data-movie-id="${movie.id}" aria-label="View details for ${escapeHTML(title)}">
+        <img src="${poster}" alt="${escapeHTML(title)} poster" loading="lazy" data-movie-image="${movie.id}">
+      </button>`
+    : '<div class="review-thumb review-thumb-empty" aria-hidden="true"></div>';
+
+  return `
+    <article class="review-item review-feature">
+      ${posterMarkup}
+      <div class="review-feature-body">
+        <div class="review-top">
+          <div>
+            <h3>${escapeHTML(title)}</h3>
+            <div class="review-movie">${escapeHTML(review.author)} &bull; ${formatDate(review.createdAt)}</div>
+          </div>
+          <div class="review-stars" aria-label="${review.rating} out of 5">${starsText(review.rating)}</div>
+        </div>
+        <p>${escapeHTML(truncateText(review.text, 150))}</p>
+      </div>
+    </article>
+  `;
 }
 
 function getAllReviews() {
@@ -1408,6 +1818,7 @@ function deleteReview(reviewId) {
   const userReviews = readStorage(STORAGE_KEYS.reviews, []);
   writeStorage(STORAGE_KEYS.reviews, userReviews.filter((review) => review.id !== reviewId));
   renderReviews();
+  renderHomeReviews();
   showToast('Review deleted.');
 }
 
@@ -1509,6 +1920,7 @@ function handleImageError(event) {
   if (!movie) return;
 
   image.dataset.fallbackApplied = 'true';
+  image.closest('.movie-card, .favorite-mini, .modal-poster, .review-feature')?.classList.add('has-image-fallback');
   image.src = getGeneratedPoster(movie);
 }
 
@@ -1843,6 +2255,12 @@ function formatDate(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return '';
   return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
+}
+
+function truncateText(value, maxLength) {
+  const text = String(value || '').trim();
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength - 1).trim()}...`;
 }
 
 function escapeHTML(value) {

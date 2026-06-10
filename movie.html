@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CineScope Review | Drama Movies</title>
+  <title>CineScope Review | Movie Story</title>
   <link rel="icon" type="image/svg+xml" href="assets/cinescope-logo.svg">
   <script>
     /* Apply saved theme before CSS paints to avoid a visible flash. */
@@ -16,7 +16,7 @@
   </script>
   <link rel="stylesheet" href="css/styles.css?v=story-page">
 </head>
-<body data-page="drama">
+<body data-page="movie">
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="CineScope Review Home">
       <span class="brand-mark">CS</span>
@@ -46,51 +46,18 @@
     </button>
   </header>
 
-  <main>
-    <section class="page-hero drama-hero">
+  <main data-movie-detail>
+    <section class="page-hero compact-hero">
       <div class="page-hero-inner">
-        <p class="eyebrow">Story driven</p>
-        <h1>Drama Movies</h1>
-        <p>Character-led films with emotional reviews and rich details.</p>
+        <p class="eyebrow">Loading</p>
+        <h1>Loading movie story...</h1>
+        <p>Please wait while CineScope prepares the full plot and owner review.</p>
       </div>
-    </section>
-
-    <section class="section-shell">
-      <div class="toolbar genre-toolbar" data-movie-controls>
-        <label class="field search-field">
-          <span>Search</span>
-          <input type="search" data-movie-search placeholder="Search drama movies">
-        </label>
-
-        <label class="field select-field">
-          <span>Sort</span>
-          <select data-sort-select>
-            <option value="popular">Most popular</option>
-            <option value="rating">Highest critic rating</option>
-            <option value="newest">Newest release</option>
-            <option value="title">Title A-Z</option>
-            <option value="user-rating">Your rating</option>
-          </select>
-        </label>
-
-        <label class="toggle-field">
-          <input type="checkbox" data-favorite-filter>
-          <span>Favorites only</span>
-        </label>
-
-        <button class="secondary-btn clear-btn" type="button" data-clear-filters>Clear</button>
-      </div>
-
-      <div class="results-row">
-        <p class="result-count" data-results-count>Showing drama movies</p>
-      </div>
-      <div class="movie-grid" data-render="genre" data-genre="Drama"></div>
-      <p class="empty-state" data-empty-state hidden>No drama movies match your search.</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 CineScope Review. Your ratings and favorites are saved locally.</p>
+    <p>&copy; 2026 CineScope Review. Full stories include spoilers and editorial owner reviews.</p>
   </footer>
 
   <script src="js/script.js?v=story-page"></script>
