@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <title>CineScope Review | Reviews</title>
+  <meta name="description" content="Read and write community movie reviews on CineScope Review. Share your opinion and rate films.">
   <link rel="icon" type="image/svg+xml" href="assets/cinescope-logo.svg">
   <script>
     /* Apply saved theme before CSS paints to avoid a visible flash. */
@@ -14,9 +18,10 @@
       } catch (error) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=story-page">
+  <link rel="stylesheet" href="css/styles.css?v=cinescope-v2">
 </head>
 <body data-page="reviews">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="CineScope Review Home">
       <span class="brand-mark">CS</span>
@@ -46,7 +51,7 @@
     </button>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero reviews-hero">
       <div class="page-hero-inner">
         <p class="eyebrow">Community notes</p>
@@ -61,7 +66,7 @@
 
         <label class="field">
           <span>Your name</span>
-          <input type="text" data-review-name placeholder="Nguyen An" required>
+          <input type="text" data-review-name placeholder="Your name" required>
         </label>
 
         <label class="field">
@@ -105,6 +110,6 @@
     <p>&copy; 2026 CineScope Review. User reviews are saved in LocalStorage.</p>
   </footer>
 
-  <script src="js/script.js?v=story-page"></script>
+  <script src="js/script.js?v=cinescope-v2"></script>
 </body>
 </html>

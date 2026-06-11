@@ -786,10 +786,11 @@ let savedRatings = readStorage(STORAGE_KEYS.ratings, {});
 let sliderIndex = 0;
 let sliderTimer = null;
 let sliderItems = [];
-let reviewDraftRating = 4;
+let reviewDraftRating = 0;
 let toastTimer = null;
 let lastModalTrigger = null;
 let lastModalMovieId = null;
+let scrollRevealObserver = null;
 
 const posterCache = new Map();
 const backdropCache = new Map();
@@ -810,6 +811,7 @@ function initApp() {
   renderHomeReviews();
   setupContactPage();
   renderStats();
+  setupScrollReveal();
   document.addEventListener('click', handleDocumentClick);
   document.addEventListener('keydown', handleKeyboard);
   document.addEventListener('error', handleImageError, true);
@@ -994,7 +996,34 @@ function setupStaticIcons() {
   });
 }
 
-/* ---------- Slider rendering and controls ---------- */
+function applyRevealTargets(root = document) {
+  const targets = root.querySelectorAll('.movie-card, .review-item, .favorite-mini, .stat-card, .section-heading, .form-panel, .contact-info, .story-panel, .owner-panel');
+  targets.forEach((target) => target.classList.add('reveal'));
+}
+
+function setupScrollReveal() {
+  applyRevealTargets();
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal:not(.is-revealed)').forEach((target) => target.classList.add('is-revealed'));
+    return;
+  }
+
+  if (!scrollRevealObserver) {
+    scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        scrollRevealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }
+
+  document.querySelectorAll('.reveal:not(.is-revealed)').forEach((target) => scrollRevealObserver.observe(target));
+}
+
+
 function setupSlider() {
   const stage = document.querySelector('[data-slider]');
   const dots = document.querySelector('[data-slider-dots]');
@@ -1116,7 +1145,14 @@ function setupMovieFilters(container, baseMovies) {
     const favoritesOnly = favoriteToggle ? favoriteToggle.checked : false;
     const sortMode = sortSelect ? sortSelect.value : 'popular';
     const filtered = baseMovies.filter((movie) => {
-      const matchesTerm = !term || movie.title.toLowerCase().includes(term);
+      const searchable = [
+        movie.title,
+        movie.director,
+        movie.cast,
+        movie.genres.join(' '),
+        movie.review
+      ].join(' ').toLowerCase();
+      const matchesTerm = !term || searchable.includes(term);
       const matchesGenre = !genre || movie.genres.includes(genre);
       const matchesFavorite = !favoritesOnly || favoriteIds.has(movie.id);
       return matchesTerm && matchesGenre && matchesFavorite;
@@ -1194,6 +1230,8 @@ function populateGenreSelect(select) {
 
 function renderMovieGrid(container, movieList) {
   container.innerHTML = movieList.map(movieCardMarkup).join('');
+  applyRevealTargets(container);
+  setupScrollReveal();
 }
 
 function movieCardMarkup(movie) {
@@ -1314,6 +1352,7 @@ function renderFavoriteLists() {
     const favorites = getPopularMovies().filter((movie) => favoriteIds.has(movie.id));
 
     list.innerHTML = favorites.map(favoriteMiniMarkup).join('');
+    applyRevealTargets(list);
     if (empty) empty.hidden = favorites.length > 0;
   });
 }
@@ -1458,6 +1497,7 @@ function openMovieModal(movieId, trigger = null) {
   const modal = ensureModal();
   const content = modal.querySelector('[data-modal-content]');
   content.innerHTML = movieModalMarkup(movie);
+  modal.classList.remove('closing');
   modal.hidden = false;
   document.body.classList.add('modal-open');
 
@@ -1514,14 +1554,25 @@ function movieModalMarkup(movie) {
 function closeModal() {
   const modal = document.querySelector('[data-modal]');
   if (!modal || modal.hidden) return;
-  modal.hidden = true;
-  document.body.classList.remove('modal-open');
-  lastModalMovieId = null;
+  if (modal.classList.contains('closing')) return;
 
-  if (lastModalTrigger && typeof lastModalTrigger.focus === 'function' && document.contains(lastModalTrigger)) {
-    lastModalTrigger.focus();
-  }
-  lastModalTrigger = null;
+  modal.classList.add('closing');
+
+  const finish = () => {
+    modal.hidden = true;
+    modal.classList.remove('closing');
+    document.body.classList.remove('modal-open');
+    lastModalMovieId = null;
+
+    if (lastModalTrigger && typeof lastModalTrigger.focus === 'function' && document.contains(lastModalTrigger)) {
+      lastModalTrigger.focus();
+    }
+    lastModalTrigger = null;
+    modal.removeEventListener('animationend', finish);
+  };
+
+  modal.addEventListener('animationend', finish);
+  window.setTimeout(finish, 300);
 }
 
 function getReviewQuote(movieId) {
@@ -1558,8 +1609,8 @@ function setupMovieDetailPage() {
         <div class="page-hero-inner">
           <p class="eyebrow">Not found</p>
           <h1>Movie not found</h1>
-          <p>This story page needs a valid movie id.</p>
-          <a class="primary-btn not-found-link" href="popular.html">${icon('film', 'button-icon')}<span>Back to movie library</span></a>
+          <p>The movie you are looking for does not exist in the CineScope library or the link may be broken.</p>
+          <a class="primary-btn not-found-link" href="popular.html">${icon('film', 'button-icon')}<span>Browse movie library</span></a>
         </div>
       </section>
     `;
@@ -1697,9 +1748,10 @@ function setupReviewPage() {
 
     const name = form.querySelector('[data-review-name]').value.trim();
     const movieId = movieSelect.value;
+    const rating = reviewDraftRating;
     const text = form.querySelector('[data-review-text]').value.trim();
 
-    if (!name || !movieId || !text) return;
+    if (!name || !movieId || !rating || !text) return;
 
     const userReviews = readStorage(STORAGE_KEYS.reviews, []);
     userReviews.unshift({
@@ -1713,7 +1765,7 @@ function setupReviewPage() {
 
     writeStorage(STORAGE_KEYS.reviews, userReviews);
     form.reset();
-    reviewDraftRating = 4;
+    reviewDraftRating = 0;
     renderReviewStarInput();
     renderReviews();
     showToast('Review saved locally.');
@@ -1743,8 +1795,10 @@ function renderReviews() {
   list.innerHTML = reviews.length
     ? reviews.map(reviewMarkup).join('')
     : '<p class="empty-state">No reviews match this movie yet.</p>';
+  applyRevealTargets(list);
   renderStats();
   renderHomeReviews();
+  setupScrollReveal();
 }
 
 function renderHomeReviews() {
@@ -1757,7 +1811,9 @@ function renderHomeReviews() {
   list.innerHTML = reviews.length
     ? reviews.map(homeReviewMarkup).join('')
     : '';
+  applyRevealTargets(list);
   if (empty) empty.hidden = reviews.length > 0;
+  setupScrollReveal();
 }
 
 function homeReviewMarkup(review) {
@@ -1844,6 +1900,54 @@ function setupContactPage() {
     if (status) status.textContent = 'Message saved locally. Thank you!';
     showToast('Contact message saved.');
   });
+
+  // Contact message viewer
+  const toggleButton = document.querySelector('[data-toggle-contacts]');
+  const messagesContainer = document.querySelector('[data-contact-messages]');
+  const messagesList = document.querySelector('[data-contact-messages-list]');
+  const clearButton = document.querySelector('[data-clear-contacts]');
+
+  function renderContactMessages() {
+    if (!messagesList) return;
+    const messages = readStorage(STORAGE_KEYS.contacts, []);
+    if (messages.length === 0) {
+      messagesList.innerHTML = '<p class="empty-state">No saved messages yet.</p>';
+      return;
+    }
+    messagesList.innerHTML = messages.map((msg) => `
+      <article class="contact-message">
+        <div class="contact-message-header">
+          <strong>${escapeHTML(msg.name || 'Anonymous')}</strong>
+          <span>${escapeHTML(msg.email || '')}</span>
+          <time>${formatDate(msg.createdAt)}</time>
+        </div>
+        <p class="contact-message-subject">${escapeHTML(msg.subject || '')}</p>
+        <p>${escapeHTML(msg.message || '')}</p>
+      </article>
+    `).join('');
+  }
+
+  if (toggleButton && messagesContainer) {
+    toggleButton.addEventListener('click', () => {
+      const isHidden = messagesContainer.hidden;
+      messagesContainer.hidden = !isHidden;
+      if (isHidden) {
+        renderContactMessages();
+        toggleButton.querySelector('span')?.remove();
+        toggleButton.innerHTML = '<span>Hide saved messages</span>';
+      } else {
+        toggleButton.innerHTML = '<span>View saved messages</span>';
+      }
+    });
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      writeStorage(STORAGE_KEYS.contacts, []);
+      renderContactMessages();
+      showToast('All messages cleared.');
+    });
+  }
 }
 
 /* ---------- Global click and keyboard events ---------- */
