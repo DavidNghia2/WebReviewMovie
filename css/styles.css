@@ -17,56 +17,64 @@
   transform: translateY(0);
 }
 
+/* ---------- Design tokens ---------- */
 :root {
   color-scheme: dark;
-  --bg: #070b14;
-  --bg-elevated: #0c1220;
-  --bg-soft: #10192b;
-  --panel: rgba(14, 20, 34, 0.86);
-  --panel-strong: #131d31;
+  --bg: #0a0a0f;
+  --bg-elevated: #111118;
+  --bg-soft: #1a1a24;
+  --panel: rgba(18, 18, 26, 0.92);
+  --panel-strong: #1e1e2a;
   --surface: rgba(255, 255, 255, 0.04);
   --surface-strong: rgba(255, 255, 255, 0.08);
-  --text: #f5f7fb;
-  --muted: #9aa6bd;
-  --muted-strong: #c5cede;
+  --text: #e8e6e3;
+  --muted: #8a8690;
+  --muted-strong: #d4d0c8;
   --line: rgba(255, 255, 255, 0.1);
   --line-strong: rgba(255, 255, 255, 0.18);
-  --brand: #ff5a4f;
-  --brand-strong: #ff7b6a;
-  --accent: #16c98d;
-  --gold: #f5b942;
-  --danger: #ff6679;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
-  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.24);
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
+  --brand: #c8102e;
+  --brand-strong: #e01e3a;
+  --accent: #d4a843;
+  --gold: #d4a843;
+  --danger: #e5484d;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.3);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
   --content: 1240px;
-  --header-height: 78px;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --header-height: 72px;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #f4f6fa;
+  --bg: #f8f7f4;
   --bg-elevated: #ffffff;
-  --bg-soft: #ebeff6;
-  --panel: rgba(255, 255, 255, 0.88);
+  --bg-soft: #f0ede6;
+  --panel: rgba(255, 255, 255, 0.94);
   --panel-strong: #ffffff;
   --surface: rgba(17, 24, 39, 0.04);
   --surface-strong: rgba(17, 24, 39, 0.08);
-  --text: #0f172a;
-  --muted: #607089;
-  --muted-strong: #334155;
+  --text: #1a1816;
+  --muted: #6b6560;
+  --muted-strong: #3a3530;
   --line: rgba(15, 23, 42, 0.1);
   --line-strong: rgba(15, 23, 42, 0.18);
-  --brand: #e63f34;
-  --brand-strong: #bb231c;
-  --accent: #0f9f6e;
-  --gold: #c98e15;
+  --brand: #a80b24;
+  --brand-strong: #8a0920;
+  --accent: #b08930;
+  --gold: #b08930;
   --danger: #d8244d;
   --shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
   --shadow-soft: 0 16px 34px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top left, rgba(168, 11, 36, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(176, 137, 48, 0.06), transparent 30%),
+    linear-gradient(180deg, var(--bg), var(--bg-soft));
 }
 
 * { box-sizing: border-box; }
@@ -78,12 +86,12 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(255, 90, 79, 0.14), transparent 28%),
-    radial-gradient(circle at top right, rgba(22, 201, 141, 0.08), transparent 30%),
+    radial-gradient(circle at top left, rgba(200, 16, 46, 0.1), transparent 28%),
+    radial-gradient(circle at top right, rgba(212, 168, 67, 0.06), transparent 30%),
     linear-gradient(180deg, var(--bg), var(--bg-soft));
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.55;
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
   transition: background-color .4s var(--ease-out), color .4s var(--ease-out);
 }
@@ -161,8 +169,7 @@ button { cursor: pointer; }
   gap: 14px;
   padding: 12px clamp(16px, 3.6vw, 48px);
   border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
-  backdrop-filter: blur(18px) saturate(1.25);
+  background: var(--bg-elevated);
   transition: background-color .4s var(--ease-out), border-color .4s var(--ease-out), color .4s var(--ease-out);
 }
 .brand {
@@ -174,19 +181,21 @@ button { cursor: pointer; }
   letter-spacing: 0.01em;
 }
 .brand-mark {
-  width: 46px;
-  height: 46px;
-  border-radius: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
   display: inline-grid;
   place-items: center;
   background:
-    linear-gradient(135deg, rgba(255,255,255,.2), transparent),
     url("../assets/cinescope-logo.svg") center / cover no-repeat;
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--brand) 30%, transparent);
   font-size: 0;
   color: transparent;
 }
-.brand-text { font-size: 1.05rem; }
+.brand-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
 
 .main-nav {
   flex: 1;
@@ -202,20 +211,20 @@ button { cursor: pointer; }
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  border-radius: 999px;
+  border-radius: 8px;
   color: var(--muted);
   font-size: 0.94rem;
-  font-weight: 850;
+  font-weight: 700;
   white-space: nowrap;
-  transition: color .2s var(--ease-out), background .2s var(--ease-out), transform .2s var(--ease-out);
+  transition: color .2s var(--ease-out), background .2s var(--ease-out), border-color .2s var(--ease-out);
 }
 .main-nav a::after {
   content: "";
   position: absolute;
-  left: 12px; right: 12px; bottom: 6px;
+  left: 12px; right: 12px; bottom: 5px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--brand), var(--accent));
+  background: var(--brand);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .22s var(--ease-out);
@@ -227,7 +236,7 @@ button { cursor: pointer; }
 }
 .main-nav a:hover::after,
 .main-nav a.is-active::after { transform: scaleX(1); }
-.main-nav a:hover { transform: translateY(-1px); }
+.main-nav a:hover { border-color: transparent; }
 
 .theme-toggle,
 .nav-toggle,
@@ -282,12 +291,18 @@ main { flex: 1; }
 .section-heading h1,
 .section-heading h2,
 .page-hero h1,
+.slide-content h2,
+.detail-copy h1,
+.modal-details h2,
 .form-panel h2,
 .contact-info h2,
 .story-panel h2,
-.owner-panel h2 {
+.owner-panel h2,
+.movie-title {
+  font-family: Georgia, "Times New Roman", serif;
   margin: 0;
-  line-height: 1.04;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
 }
 .section-heading h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); }
 .section-heading h2,

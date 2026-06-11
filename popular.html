@@ -9,15 +9,6 @@
   <title>CineScope Review | Popular Movies</title>
   <meta name="description" content="Browse the full CineScope movie library. Search, filter by genre and sort by rating or popularity.">
   <link rel="icon" type="image/svg+xml" href="assets/cinescope-logo.svg">
-  <script>
-    /* Apply saved theme before CSS paints to avoid a visible flash. */
-    (function () {
-      try {
-        var theme = localStorage.getItem('movieReviewTheme');
-        if (theme) document.documentElement.dataset.theme = theme;
-      } catch (error) {}
-    })();
-  </script>
   <link rel="stylesheet" href="css/styles.css?v=cinescope-v2">
 </head>
 <body data-page="popular">
